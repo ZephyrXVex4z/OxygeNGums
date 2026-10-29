@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="es"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>OxygenNGums — Catálogo de gomitas</title>
+<meta name="description" content="Catálogo de gomitas OxygenNGums. Consulta productos y pide por WhatsApp.">
+<meta name="theme-color" content="#e8365d">
+<meta property="og:type" content="website"><meta property="og:title" content="OxygenNGums — Catálogo de gomitas">
+<meta property="og:description" content="Explora el catálogo y consulta tu pedido por WhatsApp.">
+<meta property="og:image" content="assets/favicon.svg">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="src/styles.css">
+</head><body>
+<a class="skip" href="#main">Saltar al contenido</a>
+<header class="hdr"><div class="wrap bar">
+  <a class="logo" href="#/" aria-label="OxygenNGums, inicio"><span class="dot"></span><span id="brand"></span></a>
+  <button class="burger" id="burger" aria-expanded="false" aria-controls="nav" aria-label="Abrir menú"><span></span></button>
+  <nav id="nav" aria-label="Principal">
+    <a href="#/" data-r="home">Inicio</a><a href="#/catalogo" data-r="catalogo">Catálogo</a>
+    <a href="#/nosotros" data-r="nosotros">Sobre nosotros</a><a href="#/contacto" data-r="contacto">Contacto</a>
+    <a class="btn" id="hdrOrder" href="#/contacto">Hacer pedido</a>
+  </nav></div></header>
+<main id="main" tabindex="-1"></main>
+<footer class="ftr"><div class="wrap fgrid">
+  <div><a class="logo" href="#/"><span class="dot"></span><span id="fbrand"></span></a><p id="fabout"></p></div>
+  <div><h3>Navegación</h3><a href="#/">Inicio</a><a href="#/catalogo">Catálogo</a><a href="#/nosotros">Sobre nosotros</a><a href="#/contacto">Contacto</a></div>
+  <div><h3>Contacto</h3><div id="fcontact"></div></div>
+</div><p class="copy">© <span id="yr"></span> <span id="fname"></span></p></footer>
+<script src="src/data/site-config.js"></script>
+<script src="src/data/products.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.14.1/firebase-firestore-compat.js"></script>
+<script src="src/data/firebase-config.js"></script>
+<script src="src/cloud.js"></script>
+<script src="src/app.js"></script>
+</body></html>
