@@ -1,0 +1,13 @@
+name = "oxygengums-upload"
+main = "index.js"
+compatibility_date = "2024-11-01"
+
+[[r2_buckets]]
+binding = "BUCKET"
+bucket_name = "TU-BUCKET"
+
+[vars]
+FIREBASE_PROJECT = "oxygengums"
+FIREBASE_API_KEY = "PEGA_LA_API_KEY_WEB"
+ALLOWED_ORIGINS = "https://oxygengums.shop,https://TU-PROYECTO.pages.dev"
+PUBLIC_BASE = "https://cdn.oxygengums.shop"

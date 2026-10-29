@@ -34,13 +34,18 @@ function panel(){var ex=$("#ex");document.title="Admin — "+S.name;
   var f=function(id,l,t){return'<label>'+l+'<input id="'+id+'"'+(t?' type="'+t+'"':'')+'></label>'};
   ex.innerHTML='<h1>Panel de administración</h1><form id="pf" class="form"><h2 id="pt">Nuevo producto</h2>'+f("pn","Nombre")+f("ps","Slug (URL; se fija al crear)")+
    '<label>Categoría<select id="pc">'+S.categories.map(function(c){return'<option value="'+c.id+'">'+esc(c.name)+'</option>'}).join("")+'</select></label>'+
-   f("pp","Precio MXN","number")+f("po","Precio anterior (opcional)","number")+f("pr","Presentación")+f("pv","Sabores (separados por coma)")+f("pi","Imagen (ruta, ej. assets/products/x.webp)")+f("pg","Etiquetas (coma)")+f("pd","Descripción corta")+
+   f("pp","Precio MXN","number")+f("po","Precio anterior (opcional)","number")+f("pr","Presentación")+f("pv","Sabores (separados por coma)")+f("pi","Imagen (ruta, ej. assets/products/x.webp)")+(S.uploadUrl?'<label>Subir foto<input type="file" id="pu" accept="image/*"></label>':"")+f("pg","Etiquetas (coma)")+f("pd","Descripción corta")+
    '<label>Descripción completa<textarea id="pl" rows="4"></textarea></label><label class="chk"><input type="checkbox" id="pa" checked> Disponible</label><label class="chk"><input type="checkbox" id="pw"> Destacado</label><div class="cta"><button class="btn" type="submit">Guardar</button><button class="btn alt" type="button" id="pcl">Limpiar</button></div><p id="pm2" role="alert"></p></form><h2>Productos ('+P.length+')</h2>'+
    (P.some(function(p){return p.demo})?'<p><button class="btn alt" id="seed">Importar demostración a Firebase</button></p>':'')+
    P.map(function(p){return'<div class="rv"><b>'+esc(p.name)+'</b> · '+esc(p.slug)+'<br><button class="lnk" data-e="'+esc(p.slug)+'">Editar</button><button class="lnk" data-d="'+esc(p.slug)+'">Eliminar</button></div>'}).join("");
   var v=function(id){return $("#"+id).value},m=function(t){$("#pm2").textContent=t};
   function clear(){$("#pf").reset();$("#ps").readOnly=false;$("#pt").textContent="Nuevo producto"}
   $("#pcl").onclick=clear;
+  var pu=$("#pu");if(pu)pu.onchange=function(){var fl=pu.files[0];if(!fl)return;m("Subiendo…");
+    createImageBitmap(fl).then(function(b){var k=Math.min(1,1200/Math.max(b.width,b.height)),c=document.createElement("canvas");c.width=Math.round(b.width*k);c.height=Math.round(b.height*k);c.getContext("2d").drawImage(b,0,0,c.width,c.height);return new Promise(function(r){c.toBlob(r,"image/webp",.82)})})
+    .then(function(bl){return user.getIdToken().then(function(t){return fetch(S.uploadUrl,{method:"POST",headers:{Authorization:"Bearer "+t,"Content-Type":"image/webp"},body:bl})})})
+    .then(function(r){return r.json().then(function(j){if(!r.ok)throw new Error(j.error||r.status);return j})})
+    .then(function(j){$("#pi").value=j.url;m("Foto subida. Pulsa Guardar para aplicarla al producto.")}).catch(function(e){m("No se pudo subir: "+e.message)})};
   $("#pf").onsubmit=function(e){e.preventDefault();var n=v("pn").trim(),s=v("ps").trim()||slugify(n);if(!n||!s)return m("Escribe un nombre.");
     var old=P.find(function(p){return p.slug===s})||{},num=function(x){return x===""?null:Number(x)};
     var d={name:n,slug:s,category:v("pc"),price:num(v("pp")),oldPrice:num(v("po")),presentation:v("pr").trim(),flavors:list(v("pv")),image:v("pi").trim()||null,images:old.images||[],tags:list(v("pg")),short:v("pd").trim(),long:v("pl").trim(),available:$("#pa").checked,featured:$("#pw").checked,extra:old.extra||""};

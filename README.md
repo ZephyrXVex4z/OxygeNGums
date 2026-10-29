@@ -27,3 +27,10 @@ Panel admin, base de datos, subida de fotos, inventario, pedidos, cupones, estad
 4. Firestore → crea la colección `admins` con un documento cuyo ID sea ese UID (cualquier campo). Solo así se da admin; las reglas impiden crearlo desde la web.
 5. Entra al sitio → «Admin» → «Importar demostración» o crea productos.
 Si Firebase no responde, el catálogo usa `src/data/products.js`.
+
+## Imágenes en R2 (fase 3)
+1. R2 → tu bucket → Settings → Public access: conecta un dominio propio (ej. `cdn.oxygengums.shop`) o activa el subdominio `r2.dev`. Esa URL es `PUBLIC_BASE`.
+2. Workers & Pages → Create → Worker → pega `worker/index.js` → Deploy.
+3. Worker → Settings → Bindings → R2 bucket: nombre de variable `BUCKET`, elige tu bucket.
+4. Worker → Settings → Variables: `FIREBASE_PROJECT`, `FIREBASE_API_KEY`, `ALLOWED_ORIGINS` (sitio, sin `/` final, separados por coma) y `PUBLIC_BASE` (ver `wrangler.toml`).
+5. Pon la URL del Worker en `uploadUrl` de `src/data/site-config.js` y vuelve a publicar el sitio.

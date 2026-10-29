@@ -13,6 +13,7 @@ window.SITE = {
   social: { instagram: "", facebook: "", tiktok: "" },
   orderMessage: "Hola, me interesa este producto de OxygenNGums:\n• {producto}\n• Presentación: {presentacion}\n• Precio mostrado: {precio}\n¿Me confirman disponibilidad?",
   showDemoNotice: true, // pon false cuando reemplaces los datos de demostración
+  uploadUrl: "", // URL del Worker de subida (R2), ej. "https://oxygengums-upload.TU-CUENTA.workers.dev"
   showLegal: false,
   categories: [
     { id: "enchiladas", name: "Gomitas enchiladas", color: "#e8365d" },
