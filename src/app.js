@@ -31,7 +31,7 @@ function catalogo(q){var st={q:"",cat:q.get("cat")||"",fl:"",o:""};
  function draw(){var l=P.filter(function(p){return(!st.q||p.name.toLowerCase().indexOf(st.q)>-1)&&(!st.cat||p.category===st.cat)&&(!st.fl||(p.flavors||[]).indexOf(st.fl)>-1)});
   if(st.o)l.sort(function(a,b){var x=a.price==null?Infinity:a.price,y=b.price==null?Infinity:b.price;return st.o==="asc"?x-y:(y===Infinity?-1:x===Infinity?1:y-x)});
   $("#n").textContent=l.length+(l.length===1?" resultado":" resultados");
-  $("#g").innerHTML=l.length?l.map(card).join(""):'<div class="empty" style="grid-column:1/-1"><h2>Sin resultados</h2><p>Prueba con otra búsqueda o quita los filtros.</p></div>'}
+  $("#g").innerHTML=l.length?l.map(card).join(""):'<div class="empty" style="grid-column:1/-1"><h2>'+(P.length?"Sin resultados":"Próximamente")+'</h2><p>'+(P.length?"Prueba con otra búsqueda o quita los filtros.":"Estamos preparando el catálogo.")+'</p></div>'}
  return {html:html,init:function(){
   $("#q").oninput=function(e){st.q=e.target.value.trim().toLowerCase();draw()};
   $("#c").onchange=function(e){st.cat=e.target.value;draw()};

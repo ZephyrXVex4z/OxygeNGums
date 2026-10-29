@@ -1,10 +1,3 @@
-// PRODUCTOS — DATOS DE DEMOSTRACIÓN (demo:true). Reemplázalos por los reales.
-// image: ruta local, ej. "assets/products/gomitas-mango.webp". null = diseño provisional.
-window.PRODUCTS = [
-  { id: "p001", name: "Gomitas Mango Enchilado", slug: "gomitas-mango-enchilado", short: "Gomitas sabor mango con toque enchilado.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 60, oldPrice: null, category: "enchiladas", flavors: ["Mango"], presentation: "Bolsa", image: null, images: [], tags: ["Popular"], available: true, featured: true, extra: "", demo: true },
-  { id: "p002", name: "Gomitas Fuego", slug: "gomitas-fuego", short: "Gomitas enchiladas de demostración.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 65, oldPrice: null, category: "enchiladas", flavors: ["Sandía", "Chile"], presentation: "Bolsa", image: null, images: [], tags: ["Nuevo"], available: true, featured: true, extra: "", demo: true },
-  { id: "p003", name: "Gomitas Osito Dulce", slug: "gomitas-osito-dulce", short: "Gomitas dulces de demostración.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 50, oldPrice: null, category: "dulces", flavors: ["Fresa", "Uva"], presentation: "Bolsa", image: null, images: [], tags: [], available: true, featured: true, extra: "", demo: true },
-  { id: "p004", name: "Gomitas Ácidas Limón", slug: "gomitas-acidas-limon", short: "Gomitas ácidas de demostración.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 55, oldPrice: null, category: "acidas", flavors: ["Limón"], presentation: "Bolsa", image: null, images: [], tags: ["Recomendado"], available: true, featured: false, extra: "", demo: true },
-  { id: "p005", name: "Gomitas Frutales Mix", slug: "gomitas-frutales-mix", short: "Mezcla frutal de demostración.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 58, oldPrice: null, category: "frutales", flavors: ["Mango", "Fresa", "Piña"], presentation: "Bolsa", image: null, images: [], tags: [], available: true, featured: false, extra: "", demo: true },
-  { id: "p006", name: "Paquete Variado", slug: "paquete-variado", short: "Paquete de demostración con varias gomitas.", long: "Producto de demostración. Sustituye esta descripción por la real.", price: 150, oldPrice: null, category: "paquetes", flavors: ["Variados"], presentation: "Paquete", image: null, images: [], tags: [], available: false, featured: false, extra: "", demo: true }
-];
+// Sin productos locales: se administran desde el panel Admin (Firebase).
+// Respaldo opcional: si Firebase no responde, el catálogo se mostrará vacío.
+window.PRODUCTS = [];
